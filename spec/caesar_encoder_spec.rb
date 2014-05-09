@@ -9,6 +9,11 @@ describe "encodes a string" do
     expect(caesar_encode('z', 3)).to eq('c')
   end
 
+  it "returns the same value if the number is divisible by 26" do
+    expect(caesar_encode('a', 26)).to eq('a')
+    expect(caesar_decode('a', 52)).to eq('a')
+  end
+
   it "preserves uppercase" do
     expect(caesar_encode('P', 3)).to eq('S')
     expect(caesar_encode('Z', 3)).to eq('C')
@@ -27,6 +32,7 @@ describe "encodes a string" do
   end
 
   it "works with crazy high offsets" do
+    expect(caesar_encode("a", 27)).to eq('b')
     expect(caesar_encode("I'm a tiger", 9500)).to eq("S'w k dsqob")
   end
 end
